@@ -10,6 +10,7 @@
 int linhas;
 int colunas;
 char **mapa;
+char comando;
 
 void lemapa()
 {
@@ -50,15 +51,65 @@ void liberamapa()
     }
     free(mapa);
 }
-
-int main()
+void imprimemapa()
 {
-    lemapa();
-
     for (int j = 0; j < linhas; j++)
     {
         printf("%s\n", mapa[j]);
     }
+}
+int acabou()
+{
+    return 0;
+}
+
+void move(char comando)
+{
+    int linha;
+    int coluna;
+    for (int i = 0; i < linhas; i++)
+    {
+        for (int j = 0; j < colunas; j++)
+        {
+            if (mapa[i][j] == '@')
+            {
+                linha = i;
+                coluna = j;
+                printf("\nLinha:|%d| Coluna:|%d|", linha, coluna);
+            }
+        }
+    }
+
+    switch (comando)
+    {
+    case 'a':
+        mapa[linha][coluna - 1] = '@';
+        break;
+    case 'w':
+        mapa[linha - 1][coluna] = '@';
+        break;
+    case 's':
+        mapa[linha + 1][coluna] = '@';
+        break;
+    case 'd':
+        mapa[linha][coluna + 1] = '@';
+        break;
+    }
+
+    mapa[linha][coluna] = '.';
+}
+
+int main()
+{
+    lemapa();
+    do
+    {
+        imprimemapa();
+
+        scanf("\n%c", &comando);
+        move(comando);
+
+    } while (!acabou());
 
     liberamapa();
 }
