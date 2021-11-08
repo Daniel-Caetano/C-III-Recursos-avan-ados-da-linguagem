@@ -8,5 +8,24 @@
 
 int main()
 {
-    printf("INICIANDO PROJETO JOGO FOGE-FOGE");
+    char mapa[5][10 + 1];
+    FILE *f;
+    f = fopen("mapa.txt", "r");
+    if (!f)
+    {
+        printf("Erro na leitura do MAPA");
+        exit(1);
+    }
+
+    for (int i = 0; i < 5; i++)
+    {
+        fscanf(f, "%s", &mapa[i]);
+    }
+
+    for (int j = 0; j < 5; j++)
+    {
+        printf("%s\n", mapa[j]);
+    }
+
+    fclose(f);
 }
