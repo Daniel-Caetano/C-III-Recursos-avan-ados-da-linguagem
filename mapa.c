@@ -77,11 +77,11 @@ int limitemapa(MAPA *m, int linha, int coluna)
 }
 int podeandar(MAPA *m, int linha, int coluna)
 {
-    return m->matriz[linha][coluna] == '.';
+    return m->matriz[linha][coluna] == VAZIO;
 }
 void andanomapa(MAPA *m, int linhaOrigem, int colunaOrigem, int destinoLinha, int destinoColuna)
 {
     char personagem = m->matriz[linhaOrigem][colunaOrigem];
     m->matriz[destinoLinha][destinoColuna] = personagem;
-    m->matriz[linhaOrigem][colunaOrigem] = '.';
+    m->matriz[linhaOrigem][colunaOrigem] = VAZIO;
 }

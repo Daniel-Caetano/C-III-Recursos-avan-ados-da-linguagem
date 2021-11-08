@@ -58,7 +58,7 @@ void move(char comando)
 int main()
 {
     lemapa(&m);
-    encontramapa(&m, &heroi, '@');
+    encontramapa(&m, &heroi, HEROI);
     do
     {
         char comando;
