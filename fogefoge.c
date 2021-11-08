@@ -18,26 +18,44 @@ int acabou()
 
 void move(char comando)
 {
-    m.matriz[heroi.linha][heroi.coluna] = '.';
+
+    if (
+        comando != 'a' &&
+        comando != 'w' &&
+        comando != 's' &&
+        comando != 'd')
+        return;
+
+    int proximaLinha = heroi.linha;
+    int proximaColuna = heroi.coluna;
+
     switch (comando)
     {
     case 'a':
-        m.matriz[heroi.linha][heroi.coluna - 1] = '@';
-        heroi.coluna--;
+        proximaColuna--;
         break;
     case 'w':
-        m.matriz[heroi.linha - 1][heroi.coluna] = '@';
-        heroi.linha--;
+        proximaLinha--;
         break;
     case 's':
-        m.matriz[heroi.linha + 1][heroi.coluna] = '@';
-        heroi.linha++;
+        proximaLinha++;
         break;
     case 'd':
-        m.matriz[heroi.linha][heroi.coluna + 1] = '@';
-        heroi.coluna++;
+        proximaColuna++;
         break;
     }
+
+    if (proximaColuna >= m.colunas)
+        return;
+    if (proximaLinha >= m.linhas)
+        return;
+    if (m.matriz[proximaLinha][proximaColuna] != '.')
+        return;
+
+    m.matriz[proximaLinha][proximaColuna] = '@';
+    m.matriz[heroi.linha][heroi.coluna] = '.';
+    heroi.linha = proximaLinha;
+    heroi.coluna = proximaColuna;
 }
 
 int main()
