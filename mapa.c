@@ -75,3 +75,7 @@ int limitemapa(MAPA *m, int linha, int coluna)
 
     return 1;
 }
+int podeandar(MAPA *m, int linha, int coluna)
+{
+    return m->matriz[linha][coluna] == '.';
+}

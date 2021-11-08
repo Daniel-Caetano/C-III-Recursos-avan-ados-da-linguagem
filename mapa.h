@@ -11,6 +11,7 @@ void lemapa(MAPA *m);
 void liberamapa(MAPA *m);
 void imprimemapa(MAPA *m);
 int limitemapa(MAPA *m, int linha, int coluna);
+int podeandar(MAPA *m, int linha, int coluna);
 
 struct posicao
 {

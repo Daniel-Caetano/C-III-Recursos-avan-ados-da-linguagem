@@ -47,7 +47,7 @@ void move(char comando)
     if (!limitemapa(&m, proximaLinha, proximaColuna))
         return;
 
-    if (m.matriz[proximaLinha][proximaColuna] != '.')
+    if (!podeandar(&m, proximaLinha, proximaColuna))
         return;
 
     m.matriz[proximaLinha][proximaColuna] = '@';
