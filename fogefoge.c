@@ -7,9 +7,8 @@
 #include <stdlib.h>
 #include "fogefoge.h"
 
-int linhas;
-int colunas;
-char **mapa;
+struct mapa m;
+
 char comando;
 
 void lemapa()
@@ -21,14 +20,14 @@ void lemapa()
         printf("Erro na leitura do MAPA");
         exit(1);
     }
-    fscanf(f, "%d %d", &linhas, &colunas);
+    fscanf(f, "%d %d", &(m.linhas), &(m.colunas));
 
     alocamapa();
 
     printf("\n\n");
     for (int i = 0; i < 5; i++)
     {
-        fscanf(f, "%s", mapa[i]);
+        fscanf(f, "%s", m.mapa[i]);
     }
 
     fclose(f);
@@ -36,26 +35,26 @@ void lemapa()
 
 void alocamapa()
 {
-    mapa = malloc(sizeof(char *) * linhas);
-    for (int i = 0; i < linhas; i++)
+    m.mapa = malloc(sizeof(char *) * m.linhas);
+    for (int i = 0; i < m.linhas; i++)
     {
-        mapa[i] = malloc(sizeof(char) * (colunas + 1));
+        m.mapa[i] = malloc(sizeof(char) * (m.colunas + 1));
     }
 }
 
 void liberamapa()
 {
-    for (int i = 0; i < linhas; i++)
+    for (int i = 0; i < m.linhas; i++)
     {
-        free(mapa[i]);
+        free(m.mapa[i]);
     }
-    free(mapa);
+    free(m.mapa);
 }
 void imprimemapa()
 {
-    for (int j = 0; j < linhas; j++)
+    for (int j = 0; j < m.linhas; j++)
     {
-        printf("%s\n", mapa[j]);
+        printf("%s\n", m.mapa[j]);
     }
 }
 int acabou()
@@ -67,11 +66,11 @@ void move(char comando)
 {
     int linha;
     int coluna;
-    for (int i = 0; i < linhas; i++)
+    for (int i = 0; i < m.linhas; i++)
     {
-        for (int j = 0; j < colunas; j++)
+        for (int j = 0; j < m.colunas; j++)
         {
-            if (mapa[i][j] == '@')
+            if (m.mapa[i][j] == '@')
             {
                 linha = i;
                 coluna = j;
@@ -83,20 +82,20 @@ void move(char comando)
     switch (comando)
     {
     case 'a':
-        mapa[linha][coluna - 1] = '@';
+        m.mapa[linha][coluna - 1] = '@';
         break;
     case 'w':
-        mapa[linha - 1][coluna] = '@';
+        m.mapa[linha - 1][coluna] = '@';
         break;
     case 's':
-        mapa[linha + 1][coluna] = '@';
+        m.mapa[linha + 1][coluna] = '@';
         break;
     case 'd':
-        mapa[linha][coluna + 1] = '@';
+        m.mapa[linha][coluna + 1] = '@';
         break;
     }
 
-    mapa[linha][coluna] = '.';
+    m.mapa[linha][coluna] = '.';
 }
 
 int main()

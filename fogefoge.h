@@ -4,3 +4,10 @@ void liberamapa();
 void imprimemapa();
 int acabou();
 void move(char comando);
+
+struct mapa
+{
+    int linhas;
+    int colunas;
+    char **mapa;
+};
