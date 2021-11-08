@@ -5,11 +5,33 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
+#include <time.h>
 #include "fogefoge.h"
 #include "mapa.h"
 
 MAPA m;
 POSICAO heroi;
+
+int fantasmaandar(int linhaAtual, int colunaAtual, int* linhaDestino, int* colunaDestino){
+    int opcoes[4][2] = { 
+    {linhaAtual, colunaAtual+1},
+    {linhaAtual+1, colunaAtual},
+    {linhaAtual, colunaAtual-1},
+    {linhaAtual-1, colunaAtual},
+    };
+
+    srand(time(0));
+    for(int i=0; i<10; i++){
+        int posicao=rand()%4;
+
+        if(podeandar(&m, opcoes[posicao][0], opcoes[posicao][1])){
+            * linhaDestino = opcoes[posicao][0];
+            * colunaDestino = opcoes[posicao][1];
+             return 1;
+        }
+    }
+    return 0;
+}
 
 int fantasma()
 {
@@ -22,9 +44,13 @@ int fantasma()
         {
             if (copia.matriz[i][j] == FANTASMA)
             {
-                if (limitemapa(&m, i, j + 1) && podeandar(&copia, i, j + 1))
-                {
-                    andanomapa(&m, i, j, i, j + 1);
+                int linhaDestino;
+                int colunaDestino;
+
+                int encontrou = fantasmaandar(i, j, &linhaDestino, &colunaDestino);
+
+                if(encontrou){
+                    andanomapa(&m, i, j, linhaDestino, colunaDestino);
                 }
             }
         }
