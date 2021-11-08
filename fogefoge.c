@@ -6,9 +6,13 @@
 #include <string.h>
 #include <stdlib.h>
 
+int linhas;
+int colunas;
+char **mapa;
+
 int main()
 {
-    char mapa[5][10 + 1];
+
     FILE *f;
     f = fopen("mapa.txt", "r");
     if (!f)
@@ -17,15 +21,29 @@ int main()
         exit(1);
     }
 
-    for (int i = 0; i < 5; i++)
+    fscanf(f, "%d %d", &linhas, &colunas);
+    printf("\nLinhas |%d| - Colunas|%d|\n", linhas, colunas);
+
+    mapa = malloc(sizeof(char *) * linhas);
+    for (int i = 0; i < linhas; i++)
     {
-        fscanf(f, "%s", &mapa[i]);
+        mapa[i] = malloc(sizeof(char) * (colunas + 1));
     }
 
-    for (int j = 0; j < 5; j++)
+    for (int i = 0; i < 5; i++)
+    {
+        fscanf(f, "%s", mapa[i]);
+    }
+
+    for (int j = 0; j < linhas; j++)
     {
         printf("%s\n", mapa[j]);
     }
 
     fclose(f);
+    for (int i = 0; i < linhas; i++)
+    {
+        free(mapa[i]);
+    }
+    free(mapa);
 }
