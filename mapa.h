@@ -12,6 +12,7 @@ void liberamapa(MAPA *m);
 void imprimemapa(MAPA *m);
 int limitemapa(MAPA *m, int linha, int coluna);
 int podeandar(MAPA *m, int linha, int coluna);
+void andanomapa(MAPA *m, int linhaOrigem, int colunaOrigin, int destinoLinha, int destinoColuna);
 
 struct posicao
 {

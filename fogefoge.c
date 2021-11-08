@@ -50,10 +50,14 @@ void move(char comando)
     if (!podeandar(&m, proximaLinha, proximaColuna))
         return;
 
-    m.matriz[proximaLinha][proximaColuna] = '@';
-    m.matriz[heroi.linha][heroi.coluna] = '.';
+    andanomapa(&m, heroi.linha, heroi.coluna, proximaLinha, proximaColuna);
     heroi.linha = proximaLinha;
     heroi.coluna = proximaColuna;
+
+    /*m.matriz[proximaLinha][proximaColuna] = '@';
+    m.matriz[heroi.linha][heroi.coluna] = '.';
+    heroi.linha = proximaLinha;
+    heroi.coluna = proximaColuna;*/
 }
 
 int main()

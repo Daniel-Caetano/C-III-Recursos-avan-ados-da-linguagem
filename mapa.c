@@ -79,3 +79,9 @@ int podeandar(MAPA *m, int linha, int coluna)
 {
     return m->matriz[linha][coluna] == '.';
 }
+void andanomapa(MAPA *m, int linhaOrigem, int colunaOrigem, int destinoLinha, int destinoColuna)
+{
+    char personagem = m->matriz[linhaOrigem][colunaOrigem];
+    m->matriz[destinoLinha][destinoColuna] = personagem;
+    m->matriz[linhaOrigem][colunaOrigem] = '.';
+}
