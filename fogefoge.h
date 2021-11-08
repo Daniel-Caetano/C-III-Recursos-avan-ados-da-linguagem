@@ -5,3 +5,4 @@
 
 int acabou();
 void move(char comando);
+int fantasma();

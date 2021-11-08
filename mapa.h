@@ -1,4 +1,5 @@
 #define HEROI '@'
+#define FANTASMA 'F'
 #define VAZIO '.'
 #define PAREDE_HORIZONTAL '-'
 #define PAREDE_VERTICAL '|'
@@ -18,6 +19,7 @@ void imprimemapa(MAPA *m);
 int limitemapa(MAPA *m, int linha, int coluna);
 int podeandar(MAPA *m, int linha, int coluna);
 void andanomapa(MAPA *m, int linhaOrigem, int colunaOrigin, int destinoLinha, int destinoColuna);
+void copiamapa(MAPA *destino, MAPA *origem);
 
 struct posicao
 {
