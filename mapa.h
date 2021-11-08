@@ -10,6 +10,7 @@ void alocamapa(MAPA *m);
 void lemapa(MAPA *m);
 void liberamapa(MAPA *m);
 void imprimemapa(MAPA *m);
+int limitemapa(MAPA *m, int linha, int coluna);
 
 struct posicao
 {

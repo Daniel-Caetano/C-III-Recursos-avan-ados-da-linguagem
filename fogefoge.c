@@ -44,10 +44,9 @@ void move(char comando)
         break;
     }
 
-    if (proximaColuna >= m.colunas)
+    if (!limitemapa(&m, proximaLinha, proximaColuna))
         return;
-    if (proximaLinha >= m.linhas)
-        return;
+
     if (m.matriz[proximaLinha][proximaColuna] != '.')
         return;
 

@@ -66,3 +66,12 @@ void encontramapa(MAPA *m, POSICAO *p, char c)
         }
     }
 }
+int limitemapa(MAPA *m, int linha, int coluna)
+{
+    if (linha >= m->linhas)
+        return 0;
+    if (coluna >= m->colunas)
+        return 0;
+
+    return 1;
+}
