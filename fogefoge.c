@@ -17,7 +17,7 @@ int acabou()
 }
 int direcao(char comando)
 {
-    return comando || 'a' && comando || 'w' && comando || 's' && comando || 'd';
+    return comando || ESQUERDA && comando || CIMA && comando || BAIXO && comando || DIREITA;
 }
 void move(char comando)
 {
@@ -30,16 +30,16 @@ void move(char comando)
 
     switch (comando)
     {
-    case 'a':
+    case ESQUERDA:
         proximaColuna--;
         break;
-    case 'w':
+    case CIMA:
         proximaLinha--;
         break;
-    case 's':
+    case BAIXO:
         proximaLinha++;
         break;
-    case 'd':
+    case DIREITA:
         proximaColuna++;
         break;
     }
@@ -53,11 +53,6 @@ void move(char comando)
     andanomapa(&m, heroi.linha, heroi.coluna, proximaLinha, proximaColuna);
     heroi.linha = proximaLinha;
     heroi.coluna = proximaColuna;
-
-    /*m.matriz[proximaLinha][proximaColuna] = '@';
-    m.matriz[heroi.linha][heroi.coluna] = '.';
-    heroi.linha = proximaLinha;
-    heroi.coluna = proximaColuna;*/
 }
 
 int main()
