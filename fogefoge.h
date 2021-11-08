@@ -11,3 +11,5 @@ struct mapa
     int colunas;
     char **mapa;
 };
+
+typedef struct mapa MAPA;

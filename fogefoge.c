@@ -7,7 +7,7 @@
 #include <stdlib.h>
 #include "fogefoge.h"
 
-struct mapa m;
+MAPA m;
 
 char comando;
 
