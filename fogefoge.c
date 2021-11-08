@@ -15,15 +15,14 @@ int acabou()
 {
     return 0;
 }
-
+int direcao(char comando)
+{
+    return comando || 'a' && comando || 'w' && comando || 's' && comando || 'd';
+}
 void move(char comando)
 {
 
-    if (
-        comando != 'a' &&
-        comando != 'w' &&
-        comando != 's' &&
-        comando != 'd')
+    if (!direcao(comando))
         return;
 
     int proximaLinha = heroi.linha;
