@@ -98,7 +98,7 @@ void move(char comando)
     if (!podeandar(&m,HEROI, proximaLinha, proximaColuna))
         return;
 
-    if(!ehpersonagem(&m, PILULA, proximaLinha , proximaColuna)){
+    if(ehpersonagem(&m, PILULA, proximaLinha , proximaColuna)){
         tempilula =1;
     } 
 
@@ -107,7 +107,7 @@ void move(char comando)
     heroi.coluna = proximaColuna;
 }
 void explodepilula(){
-    printf("Explodiu!!");
+    printf("Explodiu!!\n");
 }
 int main()
 {
@@ -115,13 +115,15 @@ int main()
     encontramapa(&m, &heroi, HEROI);
     do
     {
-        printf("Tem pilula: %s\n", (tempilula ? "SIM":"NAO"));
+        printf("Tem pilula: %s\n", (tempilula ? "SIM" : "NAO" ));
 
         imprimemapa(&m);
         char comando;
         scanf("\n%c", &comando);
         move(comando);
-        if(comando == BOMBA) explodepilula();
+        if(comando == BOMBA) {
+            explodepilula();
+        }
         fantasma();
 
     } while (!acabou());
