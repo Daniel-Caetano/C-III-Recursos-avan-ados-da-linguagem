@@ -12,6 +12,7 @@
 MAPA m;
 POSICAO heroi;
 int tempilula = 0;
+int aux = 0;
 
 int fantasmaandar(int linhaAtual, int colunaAtual, int *linhaDestino, int *colunaDestino)
 {
