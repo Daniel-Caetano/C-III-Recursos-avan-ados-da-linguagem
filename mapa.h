@@ -12,15 +12,6 @@ struct mapa
 };
 typedef struct mapa MAPA;
 
-void alocamapa(MAPA *m);
-void lemapa(MAPA *m);
-void liberamapa(MAPA *m);
-void imprimemapa(MAPA *m);
-int limitemapa(MAPA *m, int linha, int coluna);
-int podeandar(MAPA *m, int linha, int coluna);
-void andanomapa(MAPA *m, int linhaOrigem, int colunaOrigin, int destinoLinha, int destinoColuna);
-void copiamapa(MAPA *destino, MAPA *origem);
-
 struct posicao
 {
     int linha;
@@ -28,4 +19,17 @@ struct posicao
 };
 typedef struct posicao POSICAO;
 
-void encontramapa(MAPA *m, POSICAO *p, char c);
+void alocamapa(MAPA *m);
+void lemapa(MAPA *m);
+void liberamapa(MAPA *m);
+void imprimemapa(MAPA *m);
+int limitemapa(MAPA *m, int linha, int coluna);
+int podeandar(MAPA *m,char personagem, int linha, int coluna);
+void andanomapa(MAPA *m, int linhaOrigem, int colunaOrigin, int destinoLinha, int destinoColuna);
+void copiamapa(MAPA *destino, MAPA *origem);
+int encontramapa(MAPA *m, POSICAO *p, char c);
+int ehparede(MAPA* m , int linha, int coluna);
+
+
+
+

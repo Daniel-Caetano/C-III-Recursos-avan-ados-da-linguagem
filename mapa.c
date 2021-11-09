@@ -62,7 +62,7 @@ void imprimemapa(MAPA *m)
     }
 }
 
-void encontramapa(MAPA *m, POSICAO *p, char c)
+int encontramapa(MAPA *m, POSICAO *p, char c)
 {
 
     for (int i = 0; i < m->linhas; i++)
@@ -73,10 +73,11 @@ void encontramapa(MAPA *m, POSICAO *p, char c)
             {
                 p->linha = i;
                 p->coluna = j;
-                return;
+                return 1;
             }
         }
     }
+    return 0;
 }
 int limitemapa(MAPA *m, int linha, int coluna)
 {
@@ -87,9 +88,20 @@ int limitemapa(MAPA *m, int linha, int coluna)
 
     return 1;
 }
-int podeandar(MAPA *m, int linha, int coluna)
+int ehparede(MAPA* m , int linha, int coluna){
+    return m->matriz[linha][coluna] == PAREDE_VERTICAL ||
+     m->matriz[linha][coluna] == PAREDE_HORIZONTAL;
+}
+
+int ehpersonagem(MAPA*m, char personagem, int linha, int coluna){
+    return m->matriz[linha][coluna]==personagem;
+}
+int podeandar(MAPA *m, char personagem , int linha, int coluna)
 {
-    return m->matriz[linha][coluna] == VAZIO;
+   return 
+     limitemapa(m , linha , coluna) && 
+     !ehparede(m  ,linha, coluna) &&
+     !ehpersonagem(m,personagem,linha,coluna);
 }
 void andanomapa(MAPA *m, int linhaOrigem, int colunaOrigem, int destinoLinha, int destinoColuna)
 {

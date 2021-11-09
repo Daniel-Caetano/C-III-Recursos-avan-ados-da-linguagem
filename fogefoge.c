@@ -24,7 +24,7 @@ int fantasmaandar(int linhaAtual, int colunaAtual, int* linhaDestino, int* colun
     for(int i=0; i<10; i++){
         int posicao=rand()%4;
 
-        if(podeandar(&m, opcoes[posicao][0], opcoes[posicao][1])){
+        if(podeandar(&m,FANTASMA, opcoes[posicao][0], opcoes[posicao][1])){
             * linhaDestino = opcoes[posicao][0];
             * colunaDestino = opcoes[posicao][1];
              return 1;
@@ -60,7 +60,10 @@ int fantasma()
 
 int acabou()
 {
-    return 0;
+    POSICAO pos;
+    int fogefogenomapa = encontramapa(&m, &pos, HEROI);
+
+    return !fogefogenomapa;
 }
 int direcao(char comando)
 {
@@ -94,7 +97,7 @@ void move(char comando)
     if (!limitemapa(&m, proximaLinha, proximaColuna))
         return;
 
-    if (!podeandar(&m, proximaLinha, proximaColuna))
+    if (!podeandar(&m,HEROI, proximaLinha, proximaColuna))
         return;
 
     andanomapa(&m, heroi.linha, heroi.coluna, proximaLinha, proximaColuna);
