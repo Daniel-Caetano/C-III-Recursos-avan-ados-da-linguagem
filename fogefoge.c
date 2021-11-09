@@ -111,6 +111,12 @@ void move(char comando)
     {
         tempilula = 1;
     }
+    if (ehpersonagem(&m, FANTASMA, proximaLinha, proximaColuna))
+    {
+        andanomapa(&m, heroi.linha, heroi.coluna, heroi.linha, heroi.coluna);
+        //heroi.linha = proximaLinha;
+        //heroi.coluna = proximaColuna;
+    }
 
     andanomapa(&m, heroi.linha, heroi.coluna, proximaLinha, proximaColuna);
     heroi.linha = proximaLinha;
@@ -140,17 +146,6 @@ void explodepilula(int linha, int coluna, int somaLinha, int somaColuna, int qtd
 
     m.matriz[linha + somaLinha][coluna + somaColuna] = VAZIO;
     explodepilula(linha + somaLinha, coluna + somaColuna, somaLinha, somaColuna, qtd - 1);
-
-    /*    for(int i=1; i<= 3; i++){
-        //talvez eu esteja usando errado o nome da função
-        if( limitemapa(&m, heroi.linha, heroi.coluna+i)){
-
-            if(ehparede(&m, heroi.linha, heroi.coluna+i)){
-                break;
-            }
-                m.matriz[heroi.linha][heroi.coluna+i]=VAZIO;
-            }
-    }*/
 }
 int main()
 {
