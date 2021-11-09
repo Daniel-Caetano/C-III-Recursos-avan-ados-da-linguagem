@@ -107,7 +107,16 @@ void move(char comando)
     heroi.coluna = proximaColuna;
 }
 void explodepilula(){
-    printf("Explodiu!!\n");
+    for(int i=1; i<= 3; i++){
+        //talvez eu esteja usando errado o nome da função
+        if( limitemapa(&m, heroi.linha, heroi.coluna+i)){
+
+            if(ehparede(&m, heroi.linha, heroi.coluna+i)){
+                break;
+            }
+                m.matriz[heroi.linha][heroi.coluna+i]=VAZIO;
+            }
+    }
 }
 int main()
 {
