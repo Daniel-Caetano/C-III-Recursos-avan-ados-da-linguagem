@@ -3,6 +3,7 @@
 #define VAZIO '.'
 #define PAREDE_HORIZONTAL '-'
 #define PAREDE_VERTICAL '|'
+#define PILULA 'P'
 
 struct mapa
 {
@@ -29,6 +30,7 @@ void andanomapa(MAPA *m, int linhaOrigem, int colunaOrigin, int destinoLinha, in
 void copiamapa(MAPA *destino, MAPA *origem);
 int encontramapa(MAPA *m, POSICAO *p, char c);
 int ehparede(MAPA* m , int linha, int coluna);
+int ehpersonagem(MAPA* m, char personagem, int linha , int coluna);
 
 
 
