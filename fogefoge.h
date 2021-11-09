@@ -4,9 +4,9 @@
 #define DIREITA 'd'
 #define BOMBA 'b'
 
-
 int acabou();
 void move(char comando);
 int fantasma();
-int fantasmaandar(int linhaAtual, int colunaAtual, int* linhaDestino, int* colunaDestino);
-void explodepilula();
+int fantasmaandar(int linhaAtual, int colunaAtual, int *linhaDestino, int *colunaDestino);
+void explodepilula(int linha, int coluna, int somaLinha, int somaColuna, int qtd);
+void explosaoemarea();
