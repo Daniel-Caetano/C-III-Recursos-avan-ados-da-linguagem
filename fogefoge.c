@@ -3,11 +3,11 @@
 ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
 
 #include <stdio.h>
-#include <string.h>
 #include <stdlib.h>
 #include <time.h>
 #include "fogefoge.h"
 #include "mapa.h"
+#include "ui.h"
 
 MAPA m;
 POSICAO heroi;
@@ -37,7 +37,7 @@ int fantasmaandar(int linhaAtual, int colunaAtual, int *linhaDestino, int *colun
     return 0;
 }
 
-int fantasma()
+void fantasma()
 {
     MAPA copia;
     copiamapa(&copia, &m);
@@ -158,16 +158,21 @@ int main()
     encontramapa(&m, &heroi, HEROI);
     do
     {
-        printf("Tem pilula: %s\n", (tempilula ? "SIM" : "NAO"));
+        printf("Pilula: %s\n", (tempilula ? "SIM" : "NAO"));
 
         imprimemapa(&m);
         char comando;
-        scanf("\n%c", &comando);
-        move(comando);
+        scanf("\n %c", &comando);
+
+        //mudei aqui
+        if (direcao(comando))
+            move(comando);
+
         if (comando == BOMBA)
         {
             explosaoemarea();
         }
+
         fantasma();
 
     } while (!acabou());
